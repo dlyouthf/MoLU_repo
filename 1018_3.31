@@ -1,0 +1,30 @@
+N,M=map(int,input().split())
+board = []
+for _ in range(N):
+    row = list(input().strip())
+    board.append(row)
+
+min_count = float('inf')
+
+for i in range(N-7):
+    for j in range(M-7):
+        count_w_start = 0
+        count_b_start = 0
+        for x in range(8):
+            for y in range(8):
+                if (x+y)%2 == 0:
+                    if board[i+x][j+y]!='W':
+                        count_w_start += 1
+                    if board[i+x][j+y]!='B':
+                        count_b_start += 1
+                else:
+                    if board[i+x][j+y]!='B':
+                        count_w_start += 1
+                    if board[i+x][j+y]!='W':
+                        count_b_start += 1
+        min_count = min(min_count, count_w_start, count_b_start)
+
+print(min_count)
+
+# 1018_3.31
+# MoLU_repo
