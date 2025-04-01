@@ -1,0 +1,9 @@
+N=int(input())
+word = set()
+for _ in range(N):
+    word.add(input().strip())
+
+sorted_words = sorted(word, key=lambda x: (len(x),x))
+
+for word in sorted_words:
+    print(word)
