@@ -1,0 +1,16 @@
+# 미리 0과 1의 호출 횟수를 저장
+MAX = 41  # 문제에서 x의 최대값이 40
+dp = [(0, 0)] * MAX  # dp[i] = (0의 횟수, 1의 횟수)
+dp[0] = (1, 0)  # fibonacci(0)을 호출하면 0이 1번, 1은 0번
+dp[1] = (0, 1)  # fibonacci(1)을 호출하면 1이 1번
+
+for i in range(2, MAX):
+    zero = dp[i-1][0] + dp[i-2][0]
+    one = dp[i-1][1] + dp[i-2][1]
+    dp[i] = (zero, one)
+
+# 입력 처리
+N = int(input())
+for _ in range(N):
+    x = int(input())
+    print(dp[x][0], dp[x][1])
